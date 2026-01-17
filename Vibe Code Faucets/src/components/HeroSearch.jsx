@@ -10,10 +10,15 @@ export const HeroSearch = ({ searchTerm, onSearchChange, isDark, faucetsCount })
         }`}>
           Find testnet faucets across {faucetsCount} sources
         </h2>
-        <p className={`text-sm ${
+        <p className={`text-sm mb-3 ${
           isDark ? 'text-slate-400' : 'text-slate-500'
         }`}>
           Links only — no wallet connections, no token distribution
+        </p>
+        <p className={`text-sm leading-relaxed max-w-3xl ${
+          isDark ? 'text-slate-300' : 'text-slate-700'
+        }`}>
+          Find working blockchain testnet faucets in one place. Filter by chain, testnet, and asset. Supports Ethereum, Solana, Polygon, Arbitrum, Optimism, Base, Avalanche, zkSync, Starknet, Scroll, and other testnets.
         </p>
       </div>
 

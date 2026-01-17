@@ -34,7 +34,7 @@ export const HeaderBar = ({
         <h1 className={`text-lg font-semibold tracking-tight transition-colors duration-200 ${
           isDark ? 'text-slate-100' : 'text-slate-900'
         }`}>
-          Testnet Faucets
+          Testnet Faucet
         </h1>
 
         <div className="flex items-center gap-2">
