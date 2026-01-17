@@ -11,9 +11,10 @@
     "check:404": "node scripts/check-faucet-links.js"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.6.1",
+    "lucide-react": "^0.294.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "lucide-react": "^0.294.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
