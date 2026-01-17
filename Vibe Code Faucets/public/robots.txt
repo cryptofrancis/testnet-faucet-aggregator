@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://testnet-faucet-aggregator.vercel.app/sitemap.xml
