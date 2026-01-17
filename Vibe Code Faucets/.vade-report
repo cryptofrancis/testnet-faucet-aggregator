@@ -1,0 +1,53 @@
+Implemented Vercel Speed Insights integration as requested.
+
+## Summary
+Successfully integrated Vercel Speed Insights into the testnet-faucet-aggregator project. This enables real-time performance monitoring and Web Vitals tracking for the application deployed on Vercel.
+
+## Changes Made
+
+### Modified Files:
+1. **package.json** - Added `@vercel/speed-insights` v1.3.1 as a production dependency
+2. **src/main.jsx** - Integrated the `SpeedInsights` component from `@vercel/speed-insights/react`
+
+### Updated Dependencies:
+- Added `@vercel/speed-insights@^1.3.1` to production dependencies
+
+## Implementation Details
+
+The implementation follows best practices for React applications:
+
+1. **Dependency Installation**: Added `@vercel/speed-insights` package using npm, which updated package-lock.json with all necessary transitive dependencies.
+
+2. **Component Integration**: Added the `SpeedInsights` component to the main React application in `src/main.jsx`. The component is placed within React.StrictMode alongside the existing Analytics component, ensuring it runs alongside other Vercel tracking utilities.
+
+3. **Framework Compatibility**: The project uses React 18 with Vite as the build tool. We utilized the React-specific import path (`@vercel/speed-insights/react`) as recommended in the Vercel documentation for React applications.
+
+## How It Works
+
+Once deployed to Vercel:
+- The Speed Insights tracking script will be automatically enabled
+- Web Vitals metrics (Core Web Vitals: LCP, FID, CLS) will be collected from real users
+- Performance data will appear in the Vercel dashboard under the Speed Insights tab
+- The `/_vercel/speed-insights/script.js` route will be automatically added by Vercel's infrastructure
+
+## Verification
+
+- ✅ Package installed successfully without conflicts
+- ✅ Build completes successfully with no errors
+- ✅ No existing functionality disrupted
+- ✅ Implementation follows existing project patterns (placed alongside Analytics component)
+- ✅ All lock files updated correctly
+
+## Next Steps
+
+After this PR is merged and deployed to Vercel:
+1. Enable Speed Insights in the Vercel project dashboard (if not already enabled)
+2. Wait for real user traffic to accumulate performance data
+3. Monitor metrics in the Vercel dashboard Speed Insights tab
+
+## Notes
+
+- The SpeedInsights component is non-intrusive and lightweight
+- It automatically tracks Core Web Vitals without additional configuration
+- The component works alongside the existing Vercel Analytics integration
+- For production deployment, Speed Insights will automatically collect and report metrics to Vercel's infrastructure
