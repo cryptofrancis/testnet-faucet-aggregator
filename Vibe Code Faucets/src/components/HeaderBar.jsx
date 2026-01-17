@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Heart, Plus } from 'lucide-react';
+import { Heart, Plus, Github } from 'lucide-react';
 
 export const HeaderBar = ({ 
   isDark, 
@@ -38,6 +38,19 @@ export const HeaderBar = ({
         </h1>
 
         <div className="flex items-center gap-2">
+          <a
+            href="https://github.com/cryptofrancis/testnet-faucet-aggregator"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`p-2 rounded-md transition-all duration-150 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+              isDark
+                ? 'text-slate-300 hover:text-slate-100 hover:bg-slate-800/50 focus:ring-blue-500/50 focus:ring-offset-slate-950'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:ring-blue-500 focus:ring-offset-white'
+            }`}
+            aria-label="View on GitHub"
+          >
+            <Github className="w-5 h-5" />
+          </a>
           <button
             onClick={onOpenDonate}
             className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-150 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
