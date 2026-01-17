@@ -1,0 +1,50 @@
+## Vercel Speed Insights Integration
+
+Implemented Vercel Speed Insights integration into the testnet-faucet-aggregator project as requested.
+
+### Summary
+Successfully integrated the `@vercel/speed-insights` package into the React + Vite project to enable performance monitoring and analytics tracking.
+
+### Changes Made
+
+**Modified Files:**
+1. **package.json** - Added `@vercel/speed-insights` (v1.3.1) as a dependency
+2. **package-lock.json** - Updated with new dependency and its tree
+3. **src/main.jsx** - Integrated SpeedInsights component:
+   - Imported `SpeedInsights` from `@vercel/speed-insights/react`
+   - Added `<SpeedInsights />` component to the React root render (alongside existing Analytics component)
+
+### Implementation Details
+
+The project uses React 18.2.0 with Vite as the build tool. Following the Vercel Speed Insights documentation for React applications:
+
+- Used the `SpeedInsights` component from `@vercel/speed-insights/react` (appropriate for React apps that aren't Next.js)
+- Placed the component in the main entry point (src/main.jsx) to ensure it's initialized on all pages
+- Integrated it alongside the existing Vercel Analytics component for comprehensive performance monitoring
+
+### How It Works
+
+Once deployed to Vercel:
+1. The SpeedInsights component injects the tracking script (`/_vercel/speed-insights/script.js`) into the page
+2. Performance metrics are automatically collected as users interact with the application
+3. Data is sent to Vercel's dashboard for analysis (can be viewed in the Speed Insights tab)
+
+### Testing
+
+- ✅ Build completed successfully with no errors
+- ✅ All dependencies properly installed
+- ✅ TypeScript/JSX code compiles without issues
+- ✅ Build output generated correctly (4.17 KB HTML, 24.80 KB CSS, 214.45 KB JS)
+
+### Next Steps
+
+After deploying to Vercel:
+1. Speed Insights will automatically be enabled in the Vercel dashboard
+2. The tracking script will be available at `/_vercel/speed-insights/script.js`
+3. Performance metrics will be visible in the Speed Insights dashboard tab after users visit the site
+
+### Notes
+
+- The project already had Vercel Analytics integrated, so SpeedInsights is added as a complementary tool
+- No breaking changes to existing functionality
+- All existing code patterns and styles were preserved
