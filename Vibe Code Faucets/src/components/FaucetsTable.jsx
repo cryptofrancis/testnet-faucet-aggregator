@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { ExternalLink, AlertCircle, ArrowUp, ArrowDown, ArrowUpDown } from 'lucide-react';
+import { ExternalLink, AlertCircle, ArrowUp, ArrowDown, ArrowUpDown, ShieldCheck } from 'lucide-react';
 import { getChainLogoFallbacks, getAssetLogoFallbacks } from '../lib/logos';
 
 // Component to handle logo with fallbacks
@@ -206,6 +206,25 @@ export const FaucetsTable = ({
                 }`}>
                   <div className="flex items-center gap-2">
                     <span>{faucet.name || '—'}</span>
+                    {faucet.type === 'official' && (
+                      <div className="relative group">
+                        <ShieldCheck className={`w-3.5 h-3.5 ${
+                          isDark ? 'text-green-400' : 'text-green-600'
+                        } cursor-help`} />
+                        <div className={`absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-3 py-2 rounded-md text-xs font-medium max-w-xs opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50 pointer-events-none ${
+                          isDark
+                            ? 'bg-slate-800 text-slate-200 border border-slate-700'
+                            : 'bg-slate-900 text-slate-100 border border-slate-800'
+                        }`}>
+                          <div className="whitespace-normal break-words">Verified Official Faucet</div>
+                          <div className={`absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-4 border-r-4 border-t-4 ${
+                            isDark
+                              ? 'border-t-slate-800 border-l-transparent border-r-transparent'
+                              : 'border-t-slate-900 border-l-transparent border-r-transparent'
+                          }`}></div>
+                        </div>
+                      </div>
+                    )}
                     {faucet.notes && (
                       <div className="relative group">
                         <AlertCircle className={`w-3.5 h-3.5 ${
@@ -297,13 +316,23 @@ export const FaucetsTable = ({
                     >
                       {faucet.type.charAt(0).toUpperCase() + faucet.type.slice(1)}
                     </span>
-                    {faucet.walletConnectionRequired && (
-                      <span className={`inline-block px-2 py-0.5 rounded text-xs font-medium tabular-nums ${
+                    {faucet.walletConnectionRequired ? (
+                      <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium tabular-nums ${
                         isDark
                           ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
                           : 'bg-amber-50 text-amber-700 border border-amber-200'
                       }`}>
-                        Wallet
+                        <AlertCircle className="w-3 h-3" />
+                        Wallet Required
+                      </span>
+                    ) : (
+                      <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium tabular-nums ${
+                        isDark
+                          ? 'bg-green-500/20 text-green-400 border border-green-500/30'
+                          : 'bg-green-50 text-green-700 border border-green-200'
+                      }`}>
+                        <ShieldCheck className="w-3 h-3" />
+                        Address Only
                       </span>
                     )}
                   </div>

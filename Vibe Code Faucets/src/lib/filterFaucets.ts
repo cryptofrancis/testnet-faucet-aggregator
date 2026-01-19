@@ -7,7 +7,8 @@ export function filterFaucets(
   chainFilter,
   assetFilter,
   typeFilter,
-  amountFilter
+  amountFilter,
+  walletConnectionFilter = []
 ) {
   const term = searchTerm.trim().toLowerCase();
 
@@ -35,10 +36,15 @@ export function filterFaucets(
       matchesType = matchesWallet && matchesTypeFilters;
     }
     
+    // Wallet connection filter: 'address-only' means walletConnectionRequired === false, 'wallet-required' means true
+    const matchesWalletConnection = walletConnectionFilter.length === 0 || 
+      (walletConnectionFilter.includes('address-only') && !faucet.walletConnectionRequired) ||
+      (walletConnectionFilter.includes('wallet-required') && faucet.walletConnectionRequired);
+    
     // If amount filter is selected, only show faucets with that specific amount
     // If no filter is selected, show all faucets (including those without amounts)
     const matchesAmount = amountFilter.length === 0 || (faucet.amount && amountFilter.includes(faucet.amount));
 
-    return matchesSearch && matchesChain && matchesAsset && matchesType && matchesAmount;
+    return matchesSearch && matchesChain && matchesAsset && matchesType && matchesAmount && matchesWalletConnection;
   });
 }

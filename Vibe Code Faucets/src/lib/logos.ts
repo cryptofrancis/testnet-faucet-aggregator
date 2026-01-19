@@ -164,6 +164,24 @@ const CHAIN_LOGO_MAP = {
     'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ton/info/logo.png',
     'https://cryptoicons.org/api/icon/ton/200',
   ],
+  'Zcash': [
+    'https://assets.coingecko.com/coins/images/486/small/zcash.png',
+    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/zcash/info/logo.png',
+    'https://s2.coinmarketcap.com/static/img/coins/128x128/1437.png',
+    'https://cryptoicons.org/api/icon/zec/200',
+  ],
+  'ZetaChain': [
+    'https://assets.coingecko.com/coins/images/31271/small/ZetaChain.png',
+    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/zetachain/info/logo.png',
+    'https://s2.coinmarketcap.com/static/img/coins/128x128/31271.png',
+    'https://cryptoicons.org/api/icon/zeta/200',
+  ],
+  'Bitcoin': [
+    'https://assets.coingecko.com/coins/images/1/small/bitcoin.png',
+    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bitcoin/info/logo.png',
+    'https://s2.coinmarketcap.com/static/img/coins/128x128/1.png',
+    'https://cryptoicons.org/api/icon/btc/200',
+  ],
   // Chainlink is a token, not a chain, but adding for completeness
   'Chainlink': [
     'https://assets.coingecko.com/coins/images/877/small/chainlink-new-logo.png',
@@ -378,6 +396,24 @@ const ASSET_LOGO_MAP = {
   'TOS': [
     'https://cryptoicons.org/api/icon/tos/200',
     'https://s2.coinmarketcap.com/static/img/coins/128x128/11419.png',
+  ],
+  'ZEC': [
+    'https://assets.coingecko.com/coins/images/486/small/zcash.png',
+    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/zcash/info/logo.png',
+    'https://s2.coinmarketcap.com/static/img/coins/128x128/1437.png',
+    'https://cryptoicons.org/api/icon/zec/200',
+  ],
+  'ZETA': [
+    'https://assets.coingecko.com/coins/images/31271/small/ZetaChain.png',
+    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/zetachain/info/logo.png',
+    'https://s2.coinmarketcap.com/static/img/coins/128x128/31271.png',
+    'https://cryptoicons.org/api/icon/zeta/200',
+  ],
+  'BTC': [
+    'https://assets.coingecko.com/coins/images/1/small/bitcoin.png',
+    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bitcoin/info/logo.png',
+    'https://s2.coinmarketcap.com/static/img/coins/128x128/1.png',
+    'https://cryptoicons.org/api/icon/btc/200',
   ],
 };
 

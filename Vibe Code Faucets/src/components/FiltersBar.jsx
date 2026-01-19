@@ -1,5 +1,6 @@
 import React from 'react';
 import { FilterDropdown } from './FilterDropdown';
+import { ShieldCheck, AlertCircle } from 'lucide-react';
 
 export const FiltersBar = ({
   isDark,
@@ -17,7 +18,9 @@ export const FiltersBar = ({
   types,
   toggleFilter,
   getChainLogo,
-  getAssetLogo
+  getAssetLogo,
+  walletConnectionFilter,
+  setWalletConnectionFilter
 }) => {
   return (
     <div className="mb-6 space-y-4">
@@ -58,20 +61,20 @@ export const FiltersBar = ({
         )}
       </div>
 
-      {/* Segmented tabs for auth type */}
+      {/* Safety Filter */}
       <div className="flex items-center gap-2">
         <span className={`text-xs font-medium uppercase tracking-wider mr-1 ${
           isDark ? 'text-slate-400' : 'text-slate-500'
-        }`}>Auth:</span>
+        }`}>Safety:</span>
         <div className={`inline-flex p-0.5 rounded-lg border ${
           isDark
             ? 'bg-slate-900/50 border-slate-800'
             : 'bg-slate-50 border-slate-200'
         }`}>
           <button
-            onClick={() => setTypeFilter([])}
+            onClick={() => setWalletConnectionFilter([])}
             className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-150 tabular-nums ${
-              typeFilter.length === 0
+              walletConnectionFilter.length === 0
                 ? isDark
                   ? 'bg-slate-800 text-slate-100 shadow-sm'
                   : 'bg-white text-slate-900 shadow-sm border border-slate-200'
@@ -82,43 +85,35 @@ export const FiltersBar = ({
           >
             All
           </button>
-          {types.map(t => {
-            const displayName = t === 'official' ? 'Account' : 
-                               t === 'community' ? 'None' : 
-                               t === 'third-party' ? 'Social' : t;
-            const isSelected = typeFilter.includes(t);
-            
-            return (
-              <button
-                key={t}
-                onClick={() => toggleFilter(t, setTypeFilter)}
-                className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-150 tabular-nums ${
-                  isSelected
-                    ? isDark
-                      ? 'bg-slate-800 text-slate-100 shadow-sm'
-                      : 'bg-white text-slate-900 shadow-sm border border-slate-200'
-                    : isDark
-                    ? 'text-slate-400 hover:text-slate-200'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                {displayName}
-              </button>
-            );
-          })}
           <button
-            onClick={() => toggleFilter('wallet', setTypeFilter)}
-            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-150 tabular-nums ${
-              typeFilter.includes('wallet')
+            onClick={() => toggleFilter('address-only', setWalletConnectionFilter)}
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-150 tabular-nums ${
+              walletConnectionFilter.includes('address-only')
                 ? isDark
-                  ? 'bg-slate-800 text-slate-100 shadow-sm'
-                  : 'bg-white text-slate-900 shadow-sm border border-slate-200'
+                  ? 'bg-green-600/90 text-white shadow-sm'
+                  : 'bg-green-600 text-white shadow-sm'
                 : isDark
                 ? 'text-slate-400 hover:text-slate-200'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
-            Wallet
+            <ShieldCheck className="w-3 h-3" />
+            Address Only
+          </button>
+          <button
+            onClick={() => toggleFilter('wallet-required', setWalletConnectionFilter)}
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-150 tabular-nums ${
+              walletConnectionFilter.includes('wallet-required')
+                ? isDark
+                  ? 'bg-amber-600/90 text-white shadow-sm'
+                  : 'bg-amber-600 text-white shadow-sm'
+                : isDark
+                ? 'text-slate-400 hover:text-slate-200'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            <AlertCircle className="w-3 h-3" />
+            Wallet Required
           </button>
         </div>
       </div>

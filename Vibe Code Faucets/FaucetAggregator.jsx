@@ -24,6 +24,7 @@ const FaucetAggregator = () => {
   const [assetFilter, setAssetFilter] = useState([]);
   const [typeFilter, setTypeFilter] = useState([]);
   const [amountFilter, setAmountFilter] = useState([]);
+  const [walletConnectionFilter, setWalletConnectionFilter] = useState([]); // 'address-only' or 'wallet-required'
   const [sortConfig, setSortConfig] = useState(
     /** @type {{ key: SortKey | null, mode: SortMode }} */ ({ key: null, mode: "default" })
   );
@@ -132,12 +133,13 @@ const FaucetAggregator = () => {
       chainFilter,
       assetFilter,
       typeFilter,
-      amountFilter
+      amountFilter,
+      walletConnectionFilter
     );
 
     const comparator = makeComparator(sortConfig.key, sortConfig.mode);
     return stableSort(filtered, comparator);
-  }, [searchTerm, chainFilter, assetFilter, typeFilter, amountFilter, sortConfig, FAUCETS_NORMALIZED]);
+  }, [searchTerm, chainFilter, assetFilter, typeFilter, amountFilter, walletConnectionFilter, sortConfig, FAUCETS_NORMALIZED]);
 
   const toggleFilter = (value, setFilter) => {
     setFilter(prev =>
@@ -151,6 +153,7 @@ const FaucetAggregator = () => {
     setAssetFilter([]);
     setTypeFilter([]);
     setAmountFilter([]);
+    setWalletConnectionFilter([]);
     setSortConfig({ key: null, mode: "default" });
   };
 
@@ -231,6 +234,8 @@ const FaucetAggregator = () => {
           toggleFilter={toggleFilter}
           getChainLogo={getChainLogo}
           getAssetLogo={getAssetLogo}
+          walletConnectionFilter={walletConnectionFilter}
+          setWalletConnectionFilter={setWalletConnectionFilter}
         />
 
         <div className="flex items-center justify-between mb-4">
@@ -245,7 +250,7 @@ const FaucetAggregator = () => {
             </span>
           </p>
 
-          {(chainFilter.length > 0 || assetFilter.length > 0 || typeFilter.length > 0 || amountFilter.length > 0 || searchTerm) && (
+          {(chainFilter.length > 0 || assetFilter.length > 0 || typeFilter.length > 0 || amountFilter.length > 0 || walletConnectionFilter.length > 0 || searchTerm) && (
             <button 
               onClick={resetFilters} 
               className={`text-xs font-medium transition-colors duration-150 hover:underline ${
