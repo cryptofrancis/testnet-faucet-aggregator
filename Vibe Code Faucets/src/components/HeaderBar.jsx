@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Heart, Plus, Github } from 'lucide-react';
+import { Heart, Plus, Github, HelpCircle } from 'lucide-react';
+import { trackNavClick } from '../lib/analytics';
 
 export const HeaderBar = ({ 
   isDark, 
@@ -38,10 +39,26 @@ export const HeaderBar = ({
         </h1>
 
         <div className="flex items-center gap-2">
+          <button
+            onClick={() => {
+              trackNavClick('faq');
+              const faqEl = document.getElementById('faq');
+              if (faqEl) faqEl.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-150 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+              isDark
+                ? 'text-slate-300 hover:text-slate-100 hover:bg-slate-800/50 focus:ring-blue-500/50 focus:ring-offset-slate-950'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:ring-blue-500 focus:ring-offset-white'
+            }`}
+          >
+            <HelpCircle className="w-3.5 h-3.5 inline mr-1.5" />
+            FAQ
+          </button>
           <a
             href="https://github.com/cryptofrancis/testnet-faucet-aggregator"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackNavClick('github')}
             className={`p-2 rounded-md transition-all duration-150 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
               isDark
                 ? 'text-slate-300 hover:text-slate-100 hover:bg-slate-800/50 focus:ring-blue-500/50 focus:ring-offset-slate-950'
@@ -52,7 +69,7 @@ export const HeaderBar = ({
             <Github className="w-5 h-5" />
           </a>
           <button
-            onClick={onOpenDonate}
+            onClick={() => { trackNavClick('donate'); onOpenDonate(); }}
             className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-150 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
               isDark
                 ? 'text-slate-300 hover:text-slate-100 hover:bg-slate-800/50 focus:ring-blue-500/50 focus:ring-offset-slate-950'
@@ -64,6 +81,7 @@ export const HeaderBar = ({
           </button>
           <button
             onClick={() => {
+              trackNavClick('request_report');
               const pageUrl = typeof window !== 'undefined' ? encodeURIComponent(window.location.href) : 'xxxxx';
               const chain = chainFilter.length === 1 ? encodeURIComponent(chainFilter[0]) : 'xxxxx';
               const testnet = 'xxxxx';

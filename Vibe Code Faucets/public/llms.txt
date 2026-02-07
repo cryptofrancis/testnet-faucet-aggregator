@@ -1,0 +1,77 @@
+# Testnet Faucet Aggregator
+
+> A free, searchable directory of 90+ blockchain testnet faucets. Find free testnet ETH, USDC, SOL, BTC, and other tokens across all major chains. No wallet connection, no signup.
+
+## What this tool does
+
+Testnet Faucet Aggregator collects every known blockchain testnet faucet into one searchable directory. Developers can filter by chain, token, testnet, and safety level to find working faucets instantly.
+
+## Supported chains and testnets
+
+- Ethereum: Sepolia, Holesky, Hoodi
+- Solana: Devnet, Testnet
+- Polygon: Amoy
+- Arbitrum: Sepolia
+- Optimism: Sepolia
+- Base: Sepolia
+- Avalanche: Fuji
+- BSC: Testnet
+- Bitcoin: Testnet 4, Signet
+- ZetaChain: Testnet
+- Zcash: Testnet
+- zkSync: Sepolia
+- Starknet: Sepolia
+- Scroll: Sepolia
+- Linea: Sepolia
+- Mantle: Sepolia
+- Blast: Sepolia
+- Sui: Testnet, Devnet
+- Aptos: Testnet
+- Near: Testnet
+- Cosmos: Testnet
+- Polkadot: Westend, Rococo
+- Fantom: Testnet
+- Algorand: Testnet
+- XRP Ledger: Testnet
+- TRON: Shasta, Nile
+- TON: Testnet
+- Injective: Testnet
+- MANTRA: Dukong
+- Celo: Sepolia
+- 0g: Galileo
+- Movement: Bardock
+- Somnia: Shannon
+
+## Supported assets
+
+ETH, SOL, POL, BTC, USDC, USDT, AVAX, BNB, SUI, APT, NEAR, ATOM, FTM, ALGO, XRP, TRX, MNT, LINK, WETH, PYUSD, EIGEN, INJ, OM, CELO, OG, MOVE, STT, TON, TOS, ZETA, ZEC, WND, ROC
+
+## Safety features
+
+- Verified badges: Green shield icon indicates official faucets run by chain teams or major providers (Alchemy, Infura, Google Cloud, Circle)
+- Safety filter: "Address Only" faucets only need a wallet address (safest). "Wallet Required" faucets need wallet connection (e.g. MetaMask)
+- This site never connects to wallets, never asks for signatures, never distributes tokens
+
+## Popular faucet queries
+
+### Sepolia faucet
+Get free Sepolia testnet ETH from: Alchemy (0.1 ETH/day), QuickNode (0.1 ETH/day), Google Cloud Web3 (0.05 ETH/day), Chainlink (0.1 ETH/day), Infura, PoW Faucet (no signup), Polygon Faucet, Optimism Console.
+
+### Holesky faucet
+Holesky is Ethereum's staking testnet. Get Holesky ETH from QuickNode (requires account + wallet connection). Used for testing validator and staking operations.
+
+### Solana devnet faucet
+Official Solana faucet at faucet.solana.com (GitHub auth). Sol Faucet at solfaucet.com supports Devnet + Testnet without signup. Google Cloud Web3 provides Solana Devnet PYUSD.
+
+### Polygon Amoy faucet
+Get Polygon Amoy POL, WETH, USDC from: Polygon Faucet (address only, no wallet), Alchemy (0.1 POL/day), QuickNode.
+
+### Testnet ETH
+Available across Sepolia, Holesky, Hoodi (Ethereum L1), plus Arbitrum Sepolia, Optimism Sepolia, Base Sepolia, and more L2 testnets.
+
+### Testnet USDC
+Circle's faucet (faucet.circle.com) provides USDC for Ethereum Sepolia, Arbitrum Sepolia, Optimism Sepolia, Base Sepolia — no wallet connection needed. 1 USDC per 2 hours.
+
+## URL
+
+https://testnet-faucet-aggregator.vercel.app

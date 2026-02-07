@@ -2,3 +2,28 @@ User-agent: *
 Allow: /
 
 Sitemap: https://testnet-faucet-aggregator.vercel.app/sitemap.xml
+
+# AI / LLM crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# LLM-readable site description
+# See https://testnet-faucet-aggregator.vercel.app/llms.txt

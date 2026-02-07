@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { ExternalLink, AlertCircle, ArrowUp, ArrowDown, ArrowUpDown, ShieldCheck } from 'lucide-react';
 import { getChainLogoFallbacks, getAssetLogoFallbacks } from '../lib/logos';
+import { trackFaucetOpen } from '../lib/analytics';
 
 // Component to handle logo with fallbacks
 const LogoWithFallback = ({ sources, alt, className, ...props }) => {
@@ -340,7 +341,7 @@ export const FaucetsTable = ({
 
                 <td className="px-4 py-3 text-right">
                   <button
-                    onClick={() => window.open(faucet.url, '_blank', 'noopener,noreferrer')}
+                    onClick={() => { trackFaucetOpen(faucet); window.open(faucet.url, '_blank', 'noopener,noreferrer'); }}
                     className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-150 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-1 ${
                       isDark
                         ? 'bg-blue-600 text-white hover:bg-blue-500 focus:ring-blue-500/50 focus:ring-offset-slate-950'

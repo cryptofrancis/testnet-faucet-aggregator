@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useEffect } from 'react';
+import React, { useState, useMemo, useRef, useEffect, useCallback } from 'react';
 import { FAUCETS } from './src/data/faucets';
 import { SORTABLE_KEYS, makeComparator, stableSort } from './src/lib/sortFaucets';
 import { filterFaucets } from './src/lib/filterFaucets';
@@ -8,6 +8,8 @@ import { HeroSearch } from './src/components/HeroSearch';
 import { FiltersBar } from './src/components/FiltersBar';
 import { FaucetsTable } from './src/components/FaucetsTable';
 import { DonateModal } from './src/components/DonateModal';
+import { FAQ } from './src/components/FAQ';
+import { trackSearch, trackFilterChange, trackFiltersReset, trackSort, trackDonateModalOpen, trackDonateAddressCopied, trackDarkModeToggle } from './src/lib/analytics';
 
 /** @typedef {"faucet" | "chain" | "testnet" | "asset"} SortKey */
 /** @typedef {"default" | "asc" | "desc"} SortMode */
@@ -33,6 +35,22 @@ const FaucetAggregator = () => {
   const [copied, setCopied] = useState(false);
   const copyTimeoutRef = useRef(null);
   const userSetDarkMode = useRef(false);
+  const searchDebounceRef = useRef(null);
+
+  // Debounced search tracking (fires 800ms after user stops typing)
+  const handleSearchChange = useCallback((term) => {
+    setSearchTerm(term);
+    if (searchDebounceRef.current) clearTimeout(searchDebounceRef.current);
+    if (term.trim()) {
+      searchDebounceRef.current = setTimeout(() => {
+        const resultCount = filterFaucets(
+          FAUCETS.map(f => ({ ...f, faucet: f.name || "" })),
+          term, chainFilter, assetFilter, typeFilter, amountFilter, walletConnectionFilter
+        ).length;
+        trackSearch(term.trim(), resultCount);
+      }, 800);
+    }
+  }, [chainFilter, assetFilter, typeFilter, amountFilter, walletConnectionFilter]);
 
   // Dark mode with localStorage persistence and system preference detection
   const [isDark, setIsDark] = useState(() => {
@@ -104,19 +122,51 @@ const FaucetAggregator = () => {
     });
   }, [assetFilter, availableAmounts]);
 
+  // Tracked filter setters
+  const setChainFilterTracked = useCallback((v) => {
+    const val = typeof v === 'function' ? v(chainFilter) : v;
+    setChainFilter(val);
+    trackFilterChange('chain', val);
+  }, [chainFilter]);
+
+  const setAssetFilterTracked = useCallback((v) => {
+    const val = typeof v === 'function' ? v(assetFilter) : v;
+    setAssetFilter(val);
+    trackFilterChange('asset', val);
+  }, [assetFilter]);
+
+  const setTypeFilterTracked = useCallback((v) => {
+    const val = typeof v === 'function' ? v(typeFilter) : v;
+    setTypeFilter(val);
+    trackFilterChange('type', val);
+  }, [typeFilter]);
+
+  const setAmountFilterTracked = useCallback((v) => {
+    const val = typeof v === 'function' ? v(amountFilter) : v;
+    setAmountFilter(val);
+    trackFilterChange('amount', val);
+  }, [amountFilter]);
+
+  const setWalletConnectionFilterTracked = useCallback((v) => {
+    const val = typeof v === 'function' ? v(walletConnectionFilter) : v;
+    setWalletConnectionFilter(val);
+    trackFilterChange('safety', val);
+  }, [walletConnectionFilter]);
+
   function handleSort(key) {
     if (!SORTABLE_KEYS.includes(key)) return;
 
     setSortConfig(prev => {
+      let next;
       if (prev.key !== key) {
-        return { key, mode: "asc" };
+        next = { key, mode: "asc" };
+      } else if (prev.mode === "asc") {
+        next = { key, mode: "desc" };
+      } else {
+        next = { key: null, mode: "default" };
       }
-      
-      if (prev.mode === "asc") {
-        return { key, mode: "desc" };
-      }
-      
-      return { key: null, mode: "default" };
+      trackSort(next.key, next.mode);
+      return next;
     });
   }
 
@@ -155,12 +205,14 @@ const FaucetAggregator = () => {
     setAmountFilter([]);
     setWalletConnectionFilter([]);
     setSortConfig({ key: null, mode: "default" });
+    trackFiltersReset();
   };
 
   const copyDonationAddress = async () => {
     try {
       await navigator.clipboard.writeText(DONATION.address);
       setCopied(true);
+      trackDonateAddressCopied();
       if (copyTimeoutRef.current) {
         clearTimeout(copyTimeoutRef.current);
       }
@@ -175,9 +227,8 @@ const FaucetAggregator = () => {
 
   useEffect(() => {
     return () => {
-      if (copyTimeoutRef.current) {
-        clearTimeout(copyTimeoutRef.current);
-      }
+      if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
+      if (searchDebounceRef.current) clearTimeout(searchDebounceRef.current);
     };
   }, []);
 
@@ -193,6 +244,7 @@ const FaucetAggregator = () => {
   const handleToggleDarkMode = () => {
     userSetDarkMode.current = true;
     setIsDark(!isDark);
+    trackDarkModeToggle(!isDark);
   };
 
   return (
@@ -204,7 +256,7 @@ const FaucetAggregator = () => {
       <HeaderBar
         isDark={isDark}
         onToggleDarkMode={handleToggleDarkMode}
-        onOpenDonate={() => setShowDonateModal(true)}
+        onOpenDonate={() => { setShowDonateModal(true); trackDonateModalOpen(); }}
         chainFilter={chainFilter}
         assetFilter={assetFilter}
       />
@@ -212,7 +264,7 @@ const FaucetAggregator = () => {
       <main className="max-w-7xl mx-auto px-6 py-8">
         <HeroSearch
           searchTerm={searchTerm}
-          onSearchChange={setSearchTerm}
+          onSearchChange={handleSearchChange}
           isDark={isDark}
           faucetsCount={FAUCETS.length}
         />
@@ -222,20 +274,20 @@ const FaucetAggregator = () => {
           chains={chains}
           assets={assets}
           chainFilter={chainFilter}
-          setChainFilter={setChainFilter}
+          setChainFilter={setChainFilterTracked}
           assetFilter={assetFilter}
-          setAssetFilter={setAssetFilter}
+          setAssetFilter={setAssetFilterTracked}
           amountFilter={amountFilter}
-          setAmountFilter={setAmountFilter}
+          setAmountFilter={setAmountFilterTracked}
           availableAmounts={availableAmounts}
           typeFilter={typeFilter}
-          setTypeFilter={setTypeFilter}
+          setTypeFilter={setTypeFilterTracked}
           types={types}
           toggleFilter={toggleFilter}
           getChainLogo={getChainLogo}
           getAssetLogo={getAssetLogo}
           walletConnectionFilter={walletConnectionFilter}
-          setWalletConnectionFilter={setWalletConnectionFilter}
+          setWalletConnectionFilter={setWalletConnectionFilterTracked}
         />
 
         <div className="flex items-center justify-between mb-4">
@@ -269,6 +321,8 @@ const FaucetAggregator = () => {
           isDark={isDark}
           onResetFilters={resetFilters}
         />
+
+        <FAQ isDark={isDark} />
       </main>
 
       <DonateModal
@@ -295,7 +349,7 @@ const FaucetAggregator = () => {
             <span>Last updated:</span>
             <span className={`font-medium ${
               isDark ? 'text-slate-300' : 'text-slate-700'
-            }`}>2025-01-17</span>
+            }`}>2025-02-07</span>
           </div>
         </div>
       </footer>

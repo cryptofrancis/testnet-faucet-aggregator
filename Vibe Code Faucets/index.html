@@ -4,18 +4,254 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/gg-dl/ABS2GSm7gN7Jr1KYy9zQ0e9i3UaFlbi79fpYgO7VHgOpyNdqAk_6MUcFXTvFVQ1dF76KhAjfNlW0CJHA_XMhuHaECdzkWFNheeos7KZ70LDmiRTfWSTjn9cddUIQsDi4rsrsPO1P2j7vcnlIOX9lWzUtiCgm2wkjlSUUoJ6uwDoKC_9nQGKJLg=s1024-rj" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- Primary Meta Tags -->
-    <title>Testnet Faucet Aggregator – Ethereum, Solana, Polygon & More</title>
-    <meta name="description" content="Find working blockchain testnet faucets in one place. Filter by chain, testnet, and asset. No wallet connect, no signup." />
-    <meta name="robots" content="index, follow" />
+    <title>Testnet Faucet Aggregator – Find Free Sepolia, Holesky, Solana Devnet & Polygon Amoy Faucets</title>
+    <meta name="description" content="Find 90+ working blockchain testnet faucets in one place. Get free testnet ETH, USDC, SOL, BTC and more for Sepolia, Holesky, Solana Devnet, Polygon Amoy, Arbitrum, Optimism, Base, and other testnets. No wallet connect, no signup." />
+    <meta name="keywords" content="testnet faucet, Sepolia faucet, Holesky faucet, Solana devnet faucet, Polygon Amoy faucet, testnet ETH, testnet USDC, free testnet tokens, blockchain faucet, crypto faucet, Ethereum faucet, Base Sepolia faucet, Arbitrum faucet, Optimism faucet, Avalanche Fuji faucet, Bitcoin testnet faucet, ZetaChain faucet, faucet aggregator" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://testnet-faucet-aggregator.vercel.app" />
+    <meta name="author" content="Testnet Faucet Aggregator" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- LLM / AI discoverability -->
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site description" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://testnet-faucet-aggregator.vercel.app" />
+    <meta property="og:title" content="Testnet Faucet Aggregator – 90+ Free Blockchain Testnet Faucets" />
+    <meta property="og:description" content="Find free testnet ETH, USDC, SOL, BTC and more. Sepolia faucet, Holesky faucet, Solana devnet faucet, Polygon Amoy faucet — all in one searchable directory with verified badges and safety filters." />
+    <meta property="og:image" content="https://testnet-faucet-aggregator.vercel.app/og-image.svg" />
+    <meta property="og:image:alt" content="Testnet Faucet Aggregator — find blockchain testnet faucets" />
+    <meta property="og:site_name" content="Testnet Faucet Aggregator" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://testnet-faucet-aggregator.vercel.app" />
+    <meta name="twitter:title" content="Testnet Faucet Aggregator – 90+ Free Blockchain Testnet Faucets" />
+    <meta name="twitter:description" content="Find free testnet ETH, USDC, SOL, BTC and more. Sepolia faucet, Holesky faucet, Solana devnet faucet, Polygon Amoy faucet — all in one searchable directory." />
+    <meta name="twitter:image" content="https://testnet-faucet-aggregator.vercel.app/og-image.svg" />
+
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Testnet Faucet Aggregator",
+      "url": "https://testnet-faucet-aggregator.vercel.app",
+      "description": "Find 90+ working blockchain testnet faucets in one place. Get free testnet ETH, USDC, SOL, BTC and more for Sepolia, Holesky, Solana Devnet, Polygon Amoy, and other testnets.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Search and filter 90+ blockchain testnet faucets",
+        "Filter by chain, asset, testnet, and amount",
+        "Safety filter: Address Only vs Wallet Required",
+        "Verified badges for official faucets",
+        "Supports Ethereum Sepolia, Holesky, Hoodi, Solana Devnet, Polygon Amoy, Arbitrum, Optimism, Base, Avalanche Fuji, Bitcoin Testnet, ZetaChain, and more",
+        "Dark mode support"
+      ],
+      "keywords": "testnet faucet, Sepolia faucet, Holesky faucet, Solana devnet faucet, Polygon Amoy faucet, testnet ETH, testnet USDC, blockchain faucet aggregator"
+    }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a testnet faucet aggregator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A testnet faucet aggregator is a tool that collects every known blockchain faucet into a single, searchable directory. Instead of hunting through docs and Discord servers, you can filter by chain, token, and safety level to find the faucet you need in seconds. This site aggregates faucets for Ethereum, Solana, Polygon, Bitcoin, Arbitrum, Optimism, Base, Avalanche, and dozens of other networks — all in one place."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I get Sepolia faucet ETH?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can get Sepolia faucet ETH from several sources including Alchemy, QuickNode, Google Cloud Web3, Chainlink, Infura, PoW Faucet, Polygon Faucet, and Optimism Console. Use the Chain filter to select Ethereum and the Asset filter to select ETH to see all available Sepolia faucet options with their amounts and requirements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I get Holesky faucet ETH?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Holesky is Ethereum's staking testnet. You can get Holesky faucet ETH from QuickNode (requires account and wallet connection). Holesky is primarily used for testing validator and staking operations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I find a Solana devnet faucet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The official Solana devnet faucet is available at faucet.solana.com and requires GitHub authentication. You can also use Sol Faucet (solfaucet.com) which supports both Solana Devnet and Testnet without sign-up. Google Cloud Web3 also provides Solana Devnet PYUSD."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I get Polygon Amoy faucet tokens?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Polygon Amoy testnet tokens (POL, WETH, USDC) are available through the official Polygon Faucet (no wallet connection needed), Alchemy (account required), and QuickNode. The Polygon Faucet at faucet.polygon.technology is the easiest option — it only requires your wallet address."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get testnet ETH?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Testnet ETH is available on multiple networks: Sepolia, Holesky, and Hoodi for Ethereum; plus L2 testnets like Arbitrum Sepolia, Optimism Sepolia, Base Sepolia, and more. Faucets marked Address Only are the safest — they only need your wallet address, no signatures or approvals."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get testnet USDC?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Testnet USDC is available through Circle's official faucet (faucet.circle.com) for Ethereum Sepolia, Arbitrum Sepolia, Optimism Sepolia, and Base Sepolia — all without wallet connection. The Polygon Faucet also provides USDC for Ethereum Sepolia and Polygon Amoy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do Address Only and Wallet Required mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Faucets marked Address Only only need you to paste your wallet address — they never ask you to connect a wallet or sign transactions. These are the safest option. Faucets marked Wallet Required need you to connect your wallet (e.g. MetaMask), which means the site could potentially request signatures."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the verified badge mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The green shield icon next to a faucet name indicates it's an official faucet — operated by the chain team, a major infrastructure provider (Alchemy, Infura, Google Cloud, Circle), or a well-known third party. Official faucets are generally more reliable and trustworthy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this site safe to use? Does it connect to my wallet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This site is a directory of links only — it never connects to your wallet, never asks for signatures, and never distributes tokens directly. When you click Open on a faucet, it takes you to the external faucet site in a new tab."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Testnet Faucet Aggregator",
+          "item": "https://testnet-faucet-aggregator.vercel.app"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "FAQ",
+          "item": "https://testnet-faucet-aggregator.vercel.app#faq"
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <noscript>
       <div style="max-width: 1200px; margin: 0 auto; padding: 2rem; font-family: system-ui, -apple-system, sans-serif;">
         <h1>Testnet Faucet Aggregator</h1>
-        <p>Find working blockchain testnet faucets in one place. Filter by chain, testnet, and asset. Supports Ethereum, Solana, Polygon, Arbitrum, Optimism, Base, Avalanche, zkSync, Starknet, Scroll, and other testnets. No wallet connect, no signup required.</p>
+        <p>Find 90+ working blockchain testnet faucets in one place. Get free testnet ETH, testnet USDC, SOL, BTC and more. Filter by chain, testnet, and asset. Supports Ethereum Sepolia, Holesky, Hoodi, Solana Devnet, Polygon Amoy, Arbitrum, Optimism, Base, Avalanche, zkSync, Starknet, Scroll, Bitcoin, ZetaChain, Zcash, and other testnets. No wallet connect, no signup required.</p>
+
+        <h2>Popular Testnet Faucets</h2>
+        <h3>Sepolia Faucet (Ethereum Testnet ETH)</h3>
+        <ul>
+          <li><a href="https://www.alchemy.com/faucets/ethereum-sepolia">Alchemy Sepolia Faucet</a> — 0.1 ETH/daily (account required)</li>
+          <li><a href="https://faucet.quicknode.com/ethereum/sepolia">QuickNode Sepolia Faucet</a> — 0.1 ETH/daily</li>
+          <li><a href="https://cloud.google.com/application/web3/faucet">Google Cloud Web3 Sepolia Faucet</a> — 0.05 ETH/daily</li>
+          <li><a href="https://faucets.chain.link/sepolia">Chainlink Sepolia Faucet</a> — 0.1 ETH/daily</li>
+          <li><a href="https://www.infura.io/faucet/sepolia">Infura Sepolia Faucet</a></li>
+          <li><a href="https://sepolia-faucet.pk910.de/">PoW Faucet Sepolia</a> — No signup</li>
+          <li><a href="https://faucet.polygon.technology/">Polygon Sepolia Faucet</a></li>
+          <li><a href="https://console.optimism.io/faucet">Optimism Console Sepolia Faucet</a></li>
+        </ul>
+
+        <h3>Holesky Faucet (Ethereum Staking Testnet)</h3>
+        <ul>
+          <li><a href="https://faucet.quicknode.com/ethereum/holesky">QuickNode Holesky Faucet</a></li>
+        </ul>
+
+        <h3>Solana Devnet Faucet</h3>
+        <ul>
+          <li><a href="https://faucet.solana.com/">Official Solana Devnet Faucet</a> — GitHub auth</li>
+          <li><a href="https://solfaucet.com/">Sol Faucet</a> — Devnet &amp; Testnet</li>
+        </ul>
+
+        <h3>Polygon Amoy Faucet</h3>
+        <ul>
+          <li><a href="https://faucet.polygon.technology/">Polygon Faucet</a> — POL, WETH, USDC</li>
+          <li><a href="https://www.alchemy.com/faucets/polygon-amoy">Alchemy Polygon Amoy Faucet</a> — 0.1 POL/day</li>
+          <li><a href="https://faucet.quicknode.com/polygon/amoy">QuickNode Polygon Amoy Faucet</a></li>
+        </ul>
+
+        <h3>Testnet USDC Faucet</h3>
+        <ul>
+          <li><a href="https://faucet.circle.com/">Circle USDC Faucet</a> — Ethereum Sepolia, Arbitrum, Optimism, Base (1 USDC/2 hours)</li>
+        </ul>
+
+        <h3>Other Chain Faucets</h3>
+        <ul>
+          <li><a href="https://www.alchemy.com/faucets/arbitrum-sepolia">Arbitrum Sepolia Faucet</a></li>
+          <li><a href="https://www.alchemy.com/faucets/optimism-sepolia">Optimism Sepolia Faucet</a></li>
+          <li><a href="https://www.alchemy.com/faucets/base-sepolia">Base Sepolia Faucet</a></li>
+          <li><a href="https://core.app/tools/testnet-faucet/">Avalanche Fuji Faucet</a></li>
+          <li><a href="https://www.bnbchain.org/en/testnet-faucet">BNB Chain Testnet Faucet</a></li>
+          <li><a href="https://mempool.space/testnet4/faucet">Bitcoin Testnet 4 Faucet</a></li>
+          <li><a href="https://cloud.google.com/application/web3/faucet/zetachain/testnet">ZetaChain Testnet Faucet</a></li>
+          <li><a href="https://testnet.zecfaucet.com/">Zcash Testnet Faucet</a></li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>What is a testnet faucet aggregator?</h3>
+        <p>A testnet faucet aggregator is a tool that collects every known blockchain faucet into a single, searchable directory. Instead of hunting through docs and Discord servers, you can filter by chain, token, and safety level to find the faucet you need in seconds.</p>
+
+        <h3>Where can I get Sepolia faucet ETH?</h3>
+        <p>You can get Sepolia faucet ETH from Alchemy, QuickNode, Google Cloud Web3, Chainlink, Infura, PoW Faucet, Polygon Faucet, and Optimism Console.</p>
+
+        <h3>Where can I get Holesky faucet ETH?</h3>
+        <p>Holesky is Ethereum's staking testnet. You can get Holesky faucet ETH from QuickNode (requires account and wallet connection).</p>
+
+        <h3>Where can I find a Solana devnet faucet?</h3>
+        <p>The official Solana devnet faucet is at faucet.solana.com (GitHub auth). Sol Faucet at solfaucet.com supports Devnet and Testnet without sign-up.</p>
+
+        <h3>Where can I get Polygon Amoy faucet tokens?</h3>
+        <p>Polygon Amoy testnet tokens (POL, WETH, USDC) are available through the Polygon Faucet (no wallet connection), Alchemy, and QuickNode.</p>
+
+        <h3>How do I get testnet ETH?</h3>
+        <p>Testnet ETH is available on Sepolia, Holesky, and Hoodi for Ethereum; plus L2 testnets like Arbitrum Sepolia, Optimism Sepolia, and Base Sepolia.</p>
+
+        <h3>How do I get testnet USDC?</h3>
+        <p>Testnet USDC is available through Circle's faucet (faucet.circle.com) for Ethereum Sepolia, Arbitrum, Optimism, and Base — all without wallet connection.</p>
+
+        <h3>Is this site safe to use?</h3>
+        <p>This site is a directory of links only — it never connects to your wallet, never asks for signatures, and never distributes tokens directly.</p>
       </div>
     </noscript>
     <div id="root"></div>
