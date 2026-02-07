@@ -9,6 +9,7 @@ import './index.css'
 
 const posthogOptions = {
   api_host: import.meta.env.VITE_PUBLIC_POSTHOG_HOST,
+  defaults: '2025-11-30',
 }
 
 // Wrapper to run session-level tracking once PostHog is ready
