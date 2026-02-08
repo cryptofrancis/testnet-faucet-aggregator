@@ -145,6 +145,22 @@ export const trackBookmarkDetection = () => {
   });
 };
 
+// ── Bookmark keyboard shortcut (Ctrl/Cmd + D) ─────────────────
+export const trackBookmarkKeypress = () => {
+  const handleKeyDown = (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
+      posthog.capture('page_bookmarked', {
+        page_url: window.location.href,
+        page_title: document.title,
+        timestamp: new Date().toISOString(),
+      });
+    }
+  };
+
+  window.addEventListener('keydown', handleKeyDown);
+  return () => window.removeEventListener('keydown', handleKeyDown);
+};
+
 // ── Session engagement ─────────────────────────────────────────
 export const trackSessionEngagement = () => {
   const startTime = Date.now();

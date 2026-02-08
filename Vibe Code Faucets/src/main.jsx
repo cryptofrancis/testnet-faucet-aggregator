@@ -4,7 +4,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import { PostHogProvider } from 'posthog-js/react'
 import FaucetAggregator from '../FaucetAggregator.jsx'
-import { trackVisitAndRetention, trackBookmarkDetection, trackSessionEngagement } from './lib/analytics'
+import { trackVisitAndRetention, trackBookmarkDetection, trackBookmarkKeypress, trackSessionEngagement } from './lib/analytics'
 import './index.css'
 
 // Only track on the production domain — disable in dev and Vercel preview deployments
@@ -28,10 +28,12 @@ const AppWithTracking = () => {
     }, 500)
 
     const cleanupEngagement = trackSessionEngagement()
+    const cleanupBookmark = trackBookmarkKeypress()
 
     return () => {
       clearTimeout(timer)
       cleanupEngagement()
+      cleanupBookmark()
     }
   }, [])
 
